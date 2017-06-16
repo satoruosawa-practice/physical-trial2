@@ -1,7 +1,9 @@
 #pragma once
 
 #include "ofMain.h"
-#include "./particle.hpp"
+#include "./sphere.h"
+
+#define PX_PER_M 100
 
 class ofApp : public ofBaseApp{
   
@@ -22,5 +24,5 @@ public:
   void dragEvent(ofDragInfo dragInfo);
   void gotMessage(ofMessage msg);
 		
-  vector<Particle> particles_;
+  vector<Sphere> spheres_;
 };
