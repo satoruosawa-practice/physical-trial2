@@ -6,33 +6,36 @@ void ofApp::setup(){
 //    ofSetFrameRate(0);
   
   ofSetFrameRate(60);
-  for (int i = 0; i < 1; i++) {
-    ofVec2f pos = ofVec2f(300, ofGetHeight() / 2);
-    ofVec2f velo = ofVec2f(5, 0);
-    Sphere s = Sphere(pos, velo, 20);
+  ofSetBackgroundColor(100);
+  ofSetColor(200);
+  
+  for (int i = 0; i < 100; i++) {
+    ofVec2f pos = ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()));
+    ofVec2f velo = ofVec2f(5 - ofRandom(10), 5 - ofRandom(10));
+    Sphere s = Sphere(pos, velo, ofRandom(20));
     spheres_.push_back(s);
   }
-  ofVec2f pos2 = ofVec2f(ofGetWidth() / 2, ofGetHeight() / 2);
-  ofVec2f velo2 = ofVec2f(0, 0);
-  Sphere p2 = Sphere(pos2, velo2, 20);
-    spheres_.push_back(p2);
+
+//  ofVec2f pos1 = ofVec2f(300, ofGetHeight() / 2);
+//  ofVec2f velo1 = ofVec2f(5, 0);
+//  Sphere s1 = Sphere(pos1, velo1, 20);
+//  spheres_.push_back(s1);
 //
-  ofVec2f pos3 = ofVec2f(ofGetWidth() - 300, ofGetHeight() / 2);
-  ofVec2f velo3 = ofVec2f(-4, 0);
-  Sphere p3 = Sphere(pos3, velo3, 20);
-  spheres_.push_back(p3);
-  
+//  ofVec2f pos2 = ofVec2f(ofGetWidth() / 2, ofGetHeight() / 2);
+//  ofVec2f velo2 = ofVec2f(0, 0);
+//  Sphere s2 = Sphere(pos2, velo2, 20);
+//  spheres_.push_back(s2);
+//
+//  ofVec2f pos3 = ofVec2f(ofGetWidth() - 300, ofGetHeight() / 2);
+//  ofVec2f velo3 = ofVec2f(-4, 0);
+//  Sphere s3 = Sphere(pos3, velo3, 20);
+//  spheres_.push_back(s3);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-  
   for (Sphere &s : spheres_){
     s.resetForce();
-  }
-  
-  
-  for (Sphere &s : spheres_){
     s.update();
   }
   
@@ -41,8 +44,6 @@ void ofApp::update(){
       spheres_[i].collision(spheres_[j]);
     }
   }
-  
-
 }
 
 //--------------------------------------------------------------
