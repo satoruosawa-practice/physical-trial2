@@ -30,8 +30,8 @@ void Sphere::collision(Sphere &another) {
     std::cout << to_another.length() << std::endl;
     ofVec2f N_to_another = to_another.getNormalized();
     float velo_diff = another.getVelocity().dot(N_to_another) - velocity_.dot(N_to_another);
-    velocity_ += velo_diff * to_another.getNormalized();
-    another.addVelocity(-velo_diff * to_another.getNormalized());
+    velocity_ += velo_diff * N_to_another;
+    another.addVelocity(-velo_diff * N_to_another);
     float buried_amount = radius_ + another.getRadius() - to_another.length();
     position_ += -N_to_another * buried_amount * 0.5;
     another.addPosition(N_to_another * buried_amount * 0.5);
